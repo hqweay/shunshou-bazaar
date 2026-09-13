@@ -41,6 +41,14 @@
       "author": "养恐龙",
       "version": "1.0.0",
       "path": "packs/capture-and-copy.action-pack.json"
+    },
+    {
+      "id": "x-tweet",
+      "name": "X 推文",
+      "description": "X / Twitter 状态页：复制推文正文与链接、生成推文分享卡片（正文 + 最多 4 张图；需顺手 v0.5+）",
+      "author": "养恐龙",
+      "version": "1.0.0",
+      "path": "packs/x-tweet.action-pack.json"
     }
   ]
 }
