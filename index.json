@@ -8,6 +8,7 @@
       "description": "划选或整页交给 AI 总结：发推文 / 复制摘要 / 生成分享卡片（需自备 AI 模型连接）",
       "author": "养恐龙",
       "version": "1.0.0",
+      "tags": ["AI", "分享"],
       "path": "packs/ai-tweet.action-pack.json"
     },
     {
@@ -16,6 +17,7 @@
       "description": "复制链接、引用划选（带来源）、把摘录做成分享卡片——不含 AI，装上即用",
       "author": "养恐龙",
       "version": "1.0.0",
+      "tags": ["基础"],
       "path": "packs/basic-clip.action-pack.json"
     },
     {
@@ -24,6 +26,7 @@
       "description": "在 GitHub 页面一键复制 owner/repo、生成仓库分享卡片",
       "author": "养恐龙",
       "version": "1.0.0",
+      "tags": ["站点"],
       "path": "packs/github-repo.action-pack.json"
     },
     {
@@ -32,6 +35,7 @@
       "description": "一次点击存两个库：虎鲸书签 +（接着做）思源数据库一行（需配好两个连接）",
       "author": "养恐龙",
       "version": "1.0.0",
+      "tags": ["笔记", "动作链"],
       "path": "packs/dual-capture.action-pack.json"
     },
     {
@@ -40,6 +44,7 @@
       "description": "存虎鲸书签，接着把「《标题》 链接」复制到剪贴板",
       "author": "养恐龙",
       "version": "1.0.0",
+      "tags": ["笔记", "动作链"],
       "path": "packs/capture-and-copy.action-pack.json"
     },
     {
@@ -48,6 +53,7 @@
       "description": "X / Twitter 状态页：复制推文正文与链接、生成推文分享卡片（正文 + 最多 4 张图；需顺手 v0.5+）",
       "author": "养恐龙",
       "version": "1.0.0",
+      "tags": ["站点", "分享"],
       "path": "packs/x-tweet.action-pack.json"
     }
   ]
