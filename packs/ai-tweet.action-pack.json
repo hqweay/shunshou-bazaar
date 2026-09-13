@@ -1,0 +1,76 @@
+{
+  "kind": "shunshou.action-pack",
+  "schemaVersion": 1,
+  "name": "AI 分享",
+  "version": "1.0.0",
+  "author": "养恐龙",
+  "description": "用 AI 把内容（优先划选，没划选用整页）总结成摘要与推文文案；需要自备一个 AI 模型连接",
+  "requires": {
+    "capabilities": ["clip.copy", "share.card", "share.intent"],
+    "connections": [{ "kind": "llm", "label": "AI 模型（OpenAI 兼容）" }]
+  },
+  "provides": {
+    "scene": {
+      "id": "bazaar-ai-share",
+      "name": "AI 分享",
+      "base": true,
+      "pinned": [],
+      "tree": [
+        {
+          "kind": "action",
+          "id": "bazaar-ai-tweet",
+          "capability": "share.intent",
+          "label": "总结并发推文",
+          "description": "用 AI 总结后打开 X 分享框，预填推文与链接",
+          "icon": "si:x",
+          "params": {
+            "intent": "https://x.com/intent/tweet?text={text}&url={url}",
+            "text": "{{field.ai.summarize.tweet}}",
+            "link": "{{url}}",
+            "maxLength": 280
+          }
+        },
+        {
+          "kind": "action",
+          "id": "bazaar-ai-copy",
+          "capability": "clip.copy",
+          "label": "复制 AI 摘要",
+          "description": "复制摘要 + 关键词 + 来源",
+          "icon": "lucide:brain",
+          "params": {
+            "template": "{{field.ai.summarize.summary}}\n\n关键词：{{field.ai.summarize.keywords}}\n来源：{{link}}"
+          }
+        },
+        {
+          "kind": "action",
+          "id": "bazaar-ai-card",
+          "capability": "share.card",
+          "label": "AI 摘要卡片",
+          "description": "把 AI 摘要与关键词渲染成分享图",
+          "icon": "lucide:image",
+          "params": {
+            "size": "auto",
+            "blocks": [
+              { "kind": "quote", "template": "{{field.ai.summarize.summary}}" },
+              { "kind": "meta", "template": "{{field.ai.summarize.keywords}} · {{hostname}}" }
+            ]
+          }
+        }
+      ]
+    },
+    "aiExtractors": [
+      {
+        "id": "ai.summarize",
+        "title": "AI 总结",
+        "connection": "",
+        "prompt": "把下面的内容整理成三条素材。\n\n要求：\n- summary：两三句话的中文摘要，保留原意\n- tweet：一条可直接发布的推文文案（不超过 140 字，口语化，不要引号，不要话题标签）\n- keywords：3 个关键词，用中文逗号分隔\n\n如果内容为空，三个字段都返回空字符串。\n\n内容（优先划选，没有划选时是整页正文）：\n{{content}}",
+        "fields": [
+          { "key": "summary", "label": "摘要" },
+          { "key": "tweet", "label": "推文文案" },
+          { "key": "keywords", "label": "关键词" }
+        ],
+        "temperature": 0.3
+      }
+    ]
+  }
+}

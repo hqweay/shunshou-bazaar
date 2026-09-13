@@ -1,0 +1,48 @@
+{
+  "kind": "shunshou.action-pack",
+  "schemaVersion": 1,
+  "name": "GitHub 仓库",
+  "version": "1.0.0",
+  "author": "养恐龙",
+  "description": "在 GitHub 页面复制 owner/repo、生成仓库分享卡片（依赖内置的 github.repo 系统变量组）",
+  "requires": {
+    "capabilities": ["clip.copy", "share.card"],
+    "connections": []
+  },
+  "provides": {
+    "scene": {
+      "id": "bazaar-github",
+      "name": "GitHub 仓库",
+      "match": { "url": ["*://github.com/*", "*://*.github.com/*"] },
+      "priority": 10,
+      "pinned": [],
+      "tree": [
+        {
+          "kind": "action",
+          "id": "bazaar-github-copy",
+          "capability": "clip.copy",
+          "label": "复制 owner/repo",
+          "description": "从网址提取 owner/repo 并复制",
+          "icon": "si:github",
+          "params": { "template": "{{field.github.repo.full}}" }
+        },
+        {
+          "kind": "action",
+          "id": "bazaar-github-share",
+          "capability": "share.card",
+          "label": "分享仓库",
+          "description": "仓库名 + 描述生成分享图",
+          "icon": "si:github",
+          "params": {
+            "size": "auto",
+            "blocks": [
+              { "kind": "title", "template": "{{field.github.repo.full}}" },
+              { "kind": "text", "template": "{{field.meta.description}}" },
+              { "kind": "meta", "template": "github.com" }
+            ]
+          }
+        }
+      ]
+    }
+  }
+}
