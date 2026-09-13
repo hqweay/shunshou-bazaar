@@ -1,0 +1,58 @@
+{
+  "kind": "shunshou.action-pack",
+  "schemaVersion": 1,
+  "name": "双库同存",
+  "version": "1.0.0",
+  "author": "养恐龙",
+  "description": "存虎鲸书签，接着写一行思源数据库：一次点击，两个库都有（需配好虎鲸 + 思源两个连接）",
+  "requires": {
+    "capabilities": ["orca.capture", "siyuan.capture"],
+    "connections": [
+      { "kind": "orca", "label": "虎鲸笔记" },
+      { "kind": "siyuan", "label": "思源笔记" }
+    ]
+  },
+  "provides": {
+    "scene": {
+      "id": "bazaar-dual-capture",
+      "name": "双库同存",
+      "base": true,
+      "pinned": [],
+      "tree": [
+        {
+          "kind": "action",
+          "id": "bazaar-dual-capture-bookmark",
+          "capability": "orca.capture",
+          "label": "双库同存",
+          "description": "先存虎鲸书签，再写一行思源数据库",
+          "icon": "lucide:layers",
+          "params": {
+            "connection": "",
+            "template": "{{link}}",
+            "tags": [
+              {
+                "name": "书签",
+                "props": { "标题": "{{title}}", "链接": "{{url}}", "域名": "{{hostname}}" }
+              }
+            ],
+            "target": "",
+            "position": "lastChild"
+          },
+          "then": [
+            {
+              "capability": "siyuan.capture",
+              "label": "存到思源",
+              "params": {
+                "connection": "",
+                "database": "",
+                "title": "{{title}}",
+                "columns": [{ "column": "网址", "value": "{{url}}", "type": "link" }],
+                "createColumns": true
+              }
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

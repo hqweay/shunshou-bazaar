@@ -25,6 +25,22 @@
       "author": "养恐龙",
       "version": "1.0.0",
       "path": "packs/github-repo.action-pack.json"
+    },
+    {
+      "id": "dual-capture",
+      "name": "双库同存",
+      "description": "一次点击存两个库：虎鲸书签 +（接着做）思源数据库一行（需配好两个连接）",
+      "author": "养恐龙",
+      "version": "1.0.0",
+      "path": "packs/dual-capture.action-pack.json"
+    },
+    {
+      "id": "capture-and-copy",
+      "name": "存完顺手分享",
+      "description": "存虎鲸书签，接着把「《标题》 链接」复制到剪贴板",
+      "author": "养恐龙",
+      "version": "1.0.0",
+      "path": "packs/capture-and-copy.action-pack.json"
     }
   ]
 }

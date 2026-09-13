@@ -1,0 +1,49 @@
+{
+  "kind": "shunshou.action-pack",
+  "schemaVersion": 1,
+  "name": "存完顺手分享",
+  "version": "1.0.0",
+  "author": "养恐龙",
+  "description": "存虎鲸书签，接着把「《标题》 链接」复制到剪贴板——存完顺手就能粘贴分享（需配好虎鲸连接）",
+  "requires": {
+    "capabilities": ["orca.capture", "clip.copy"],
+    "connections": [{ "kind": "orca", "label": "虎鲸笔记" }]
+  },
+  "provides": {
+    "scene": {
+      "id": "bazaar-capture-copy",
+      "name": "存完顺手分享",
+      "base": true,
+      "pinned": [],
+      "tree": [
+        {
+          "kind": "action",
+          "id": "bazaar-capture-copy-share",
+          "capability": "orca.capture",
+          "label": "存完顺手分享",
+          "description": "存虎鲸书签，接着复制分享文案",
+          "icon": "lucide:notebook-pen",
+          "params": {
+            "connection": "",
+            "template": "{{link}}",
+            "tags": [
+              {
+                "name": "书签",
+                "props": { "标题": "{{title}}", "链接": "{{url}}", "域名": "{{hostname}}" }
+              }
+            ],
+            "target": "",
+            "position": "lastChild"
+          },
+          "then": [
+            {
+              "capability": "clip.copy",
+              "label": "复制分享文案",
+              "params": { "template": "《{{title}}》 {{url}}" }
+            }
+          ]
+        }
+      ]
+    }
+  }
+}
