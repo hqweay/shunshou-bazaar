@@ -1,8 +1,8 @@
 {
   "kind": "shunshou.action-pack",
-  "schemaVersion": 1,
+  "schemaVersion": 2,
   "name": "GitHub 仓库",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "author": "养恐龙",
   "description": "在 GitHub 页面复制 owner/repo、生成仓库分享卡片（依赖内置的 github.repo 系统变量组）",
   "requires": {
@@ -40,7 +40,8 @@
               { "kind": "text", "template": "{{field.meta.description}}" },
               { "kind": "meta", "template": "github.com" }
             ]
-          }
+          },
+          "then": [{ "capability": "deliver.copyImage", "label": "复制图片", "params": {} }]
         }
       ]
     }

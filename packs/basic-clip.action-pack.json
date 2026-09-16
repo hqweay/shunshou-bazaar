@@ -1,8 +1,8 @@
 {
   "kind": "shunshou.action-pack",
-  "schemaVersion": 1,
+  "schemaVersion": 2,
   "name": "摘录",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "author": "养恐龙",
   "description": "复制链接、引用划选（带来源）、把摘录做成分享卡片；不含 AI，装上即用",
   "requires": {
@@ -47,7 +47,8 @@
               { "kind": "quote", "template": "{{selection}}" },
               { "kind": "meta", "template": "—— {{title}}" }
             ]
-          }
+          },
+          "then": [{ "capability": "deliver.copyImage", "label": "复制图片", "params": {} }]
         }
       ]
     }

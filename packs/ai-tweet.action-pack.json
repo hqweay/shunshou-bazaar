@@ -1,8 +1,8 @@
 {
   "kind": "shunshou.action-pack",
-  "schemaVersion": 1,
+  "schemaVersion": 2,
   "name": "AI 分享",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "author": "养恐龙",
   "description": "用 AI 把内容（优先划选，没划选用整页）总结成摘要与推文文案；需要自备一个 AI 模型连接",
   "requires": {
@@ -54,7 +54,8 @@
               { "kind": "quote", "template": "{{field.ai.summarize.summary}}" },
               { "kind": "meta", "template": "{{field.ai.summarize.keywords}} · {{hostname}}" }
             ]
-          }
+          },
+          "then": [{ "capability": "deliver.copyImage", "label": "复制图片", "params": {} }]
         }
       ]
     },
