@@ -3,6 +3,24 @@
   "updatedAt": "2026-09-17",
   "items": [
     {
+      "id": "x-automation",
+      "name": "X 自动化示例",
+      "description": "在 X 状态页演示「点击元素」：展开长推文 / 点赞 / 收藏 / 关注（合成事件、尽力而为）",
+      "author": "养恐龙",
+      "version": "1.0.0",
+      "tags": ["站点"],
+      "path": "packs/x-automation.action-pack.json"
+    },
+    {
+      "id": "bilibili-search",
+      "name": "划选即搜（B站）",
+      "description": "在 B站划选一个词，一键填进搜索框并搜索——「填写 + 点击」的动作链示范",
+      "author": "养恐龙",
+      "version": "1.0.0",
+      "tags": ["站点", "动作链"],
+      "path": "packs/bilibili-search.action-pack.json"
+    },
+    {
       "id": "ai-tweet",
       "name": "AI 总结与分享",
       "description": "划选或整页交给 AI 总结：发推文 / 复制摘要 / 生成分享卡片（需自备 AI 模型连接）",

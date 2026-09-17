@@ -1,0 +1,42 @@
+{
+  "kind": "shunshou.action-pack",
+  "schemaVersion": 2,
+  "name": "划选即搜（B站）",
+  "version": "1.0.0",
+  "author": "养恐龙",
+  "description": "在 B站划选一个词，一键填进站内搜索框并点搜索——演示「填写输入框 → 点击元素」的动作链（合成事件、尽力而为；站点改版后可在参数里点「拾取」修正选择器）。",
+  "requires": {
+    "capabilities": ["page.fill", "page.click"],
+    "connections": []
+  },
+  "provides": {
+    "scene": {
+      "id": "bazaar-bili-search",
+      "name": "划选即搜（B站）",
+      "match": { "url": ["*://*.bilibili.com/*"] },
+      "priority": 10,
+      "pinned": ["bazaar-bili-search-run"],
+      "tree": [
+        {
+          "kind": "action",
+          "id": "bazaar-bili-search-run",
+          "capability": "page.fill",
+          "label": "划选即搜",
+          "description": "把划选的文字填进 B站搜索框，然后点搜索。没划选时会搜索空内容",
+          "icon": "lucide:search",
+          "params": {
+            "selector": "input.nav-search-input",
+            "value": "{{selection}}"
+          },
+          "then": [
+            {
+              "capability": "page.click",
+              "label": "点搜索",
+              "params": { "selector": ".nav-search-btn" }
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

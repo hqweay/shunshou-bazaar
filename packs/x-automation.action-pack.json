@@ -1,0 +1,67 @@
+{
+  "kind": "shunshou.action-pack",
+  "schemaVersion": 2,
+  "name": "X 自动化示例",
+  "version": "1.0.0",
+  "author": "养恐龙",
+  "description": "在 X（Twitter）状态页演示「网页操作 · 点击元素」：展开长推文 / 点赞 / 收藏 / 关注。点击是合成事件、尽力而为（需已登录 X；站点改版后可在参数里点「拾取」修正选择器）。",
+  "requires": {
+    "capabilities": ["page.click"],
+    "connections": []
+  },
+  "provides": {
+    "scene": {
+      "id": "bazaar-x-automation",
+      "name": "X 自动化示例",
+      "match": { "url": ["*://x.com/*/status/*", "*://twitter.com/*/status/*"] },
+      "priority": 10,
+      "pinned": [],
+      "tree": [
+        {
+          "kind": "group",
+          "id": "bazaar-x-automation-group",
+          "label": "自动化 · X",
+          "icon": "si:x",
+          "children": [
+            {
+              "kind": "action",
+              "id": "bazaar-x-automation-expand",
+              "capability": "page.click",
+              "label": "展开长推文",
+              "description": "点开推文里的「显示更多」，让长文完整展示。改版后可用「拾取」修正选择器",
+              "icon": "lucide:eye",
+              "params": { "selector": "[data-testid=\"tweet-text-show-more-link\"]" }
+            },
+            {
+              "kind": "action",
+              "id": "bazaar-x-automation-like",
+              "capability": "page.click",
+              "label": "点赞",
+              "description": "点亮当前推文的点赞按钮（合成点击是切换语义：已点赞会取消）",
+              "icon": "lucide:heart",
+              "params": { "selector": "[data-testid=\"like\"]" }
+            },
+            {
+              "kind": "action",
+              "id": "bazaar-x-automation-bookmark",
+              "capability": "page.click",
+              "label": "收藏",
+              "description": "把当前推文加入书签（已收藏会取消）",
+              "icon": "lucide:bookmark",
+              "params": { "selector": "[data-testid=\"bookmark\"]" }
+            },
+            {
+              "kind": "action",
+              "id": "bazaar-x-automation-follow",
+              "capability": "page.click",
+              "label": "关注作者",
+              "description": "点作者卡片上的「关注」（选择器按「-follow」结尾匹配当前作者；已关注会变成取消关注）",
+              "icon": "lucide:plus",
+              "params": { "selector": "[data-testid$=\"-follow\"]" }
+            }
+          ]
+        }
+      ]
+    }
+  }
+}
