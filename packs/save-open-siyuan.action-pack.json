@@ -1,0 +1,72 @@
+{
+  "kind": "shunshou.action-pack",
+  "schemaVersion": 2,
+  "name": "存完打开（思源）",
+  "version": "1.0.0",
+  "author": "养恐龙",
+  "description": "存进思源（文档 / 文档型数据库），接着自动打开刚建的文档——存完直接跳过去看 / 补写（需先配好思源连接）",
+  "requires": {
+    "capabilities": ["siyuan.doc", "siyuan.docDatabase", "open.url"],
+    "connections": [{ "kind": "siyuan", "label": "思源笔记" }]
+  },
+  "provides": {
+    "scene": {
+      "id": "bazaar-save-open-siyuan",
+      "name": "存完打开（思源）",
+      "base": true,
+      "pinned": [],
+      "tree": [
+        {
+          "kind": "action",
+          "id": "save-open-siyuan-doc",
+          "capability": "siyuan.doc",
+          "label": "存思源文档并打开",
+          "description": "存进思源文档（留空 = 今日日记），接着打开刚写入的文档",
+          "icon": "lucide:file-text",
+          "params": {
+            "connection": "",
+            "notebook": "",
+            "document": "",
+            "template": "{{link}}",
+            "position": "lastChild"
+          },
+          "then": [
+            {
+              "capability": "open.url",
+              "label": "打开刚存的文档",
+              "params": { "url": "{{step.save-open-siyuan-doc.link}}", "encode": "raw" }
+            }
+          ]
+        },
+        {
+          "kind": "action",
+          "id": "save-open-siyuan-db",
+          "capability": "siyuan.docDatabase",
+          "label": "存思源数据库并打开",
+          "description": "新建一篇文档并绑定进数据库，接着打开刚建的文档",
+          "icon": "si:siyuan",
+          "params": {
+            "connection": "",
+            "database": "",
+            "mode": "template",
+            "template": "",
+            "notebook": "",
+            "path": "/收集/{{dateText}}/{{title}}",
+            "title": "{{title}}",
+            "content": "{{page.clip}}",
+            "tags": "",
+            "images": "asset",
+            "duplicates": "ask"
+          },
+          "then": [
+            {
+              "capability": "open.url",
+              "label": "打开刚建的文档",
+              "params": { "url": "{{step.save-open-siyuan-db.link}}", "encode": "raw" }
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

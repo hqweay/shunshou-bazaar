@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-09-17",
+  "updatedAt": "2026-09-19",
   "items": [
     {
       "id": "x-automation",
@@ -73,6 +73,24 @@
       "version": "1.1.0",
       "tags": ["站点", "分享"],
       "path": "packs/x-tweet.action-pack.json"
+    },
+    {
+      "id": "save-open-orca",
+      "name": "存完打开（虎鲸）",
+      "description": "存一篇虎鲸笔记，接着自动打开刚存的那一块——存完直接跳过去看 / 补写（需先配好虎鲸连接）",
+      "author": "养恐龙",
+      "version": "1.0.0",
+      "tags": ["笔记", "动作链"],
+      "path": "packs/save-open-orca.action-pack.json"
+    },
+    {
+      "id": "save-open-siyuan",
+      "name": "存完打开（思源）",
+      "description": "存进思源（文档 / 文档型数据库），接着自动打开刚建的文档（需先配好思源连接）",
+      "author": "养恐龙",
+      "version": "1.0.0",
+      "tags": ["笔记", "动作链"],
+      "path": "packs/save-open-siyuan.action-pack.json"
     }
   ]
 }
