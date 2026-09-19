@@ -2,7 +2,7 @@
   "kind": "shunshou.action-pack",
   "schemaVersion": 2,
   "name": "Reddit",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "author": "养恐龙",
   "description": "在 Reddit 帖子页面复制链接、复制网页剪藏，或生成全文分享卡片；装上即用",
   "requires": {
@@ -49,8 +49,7 @@
               { "kind": "text", "template": "{{page.clip}}" },
               { "kind": "meta", "template": "{{url}}" }
             ]
-          },
-          "then": [{ "capability": "deliver.copyImage", "label": "复制图片", "params": {} }]
+          }
         }
       ]
     }
