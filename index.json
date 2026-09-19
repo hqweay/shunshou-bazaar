@@ -127,6 +127,15 @@
       "version": "1.1.0",
       "tags": ["站点"],
       "path": "packs/reddit.action-pack.json"
+    },
+    {
+      "id": "bilibili-subtitle-timed",
+      "name": "B站字幕（带时间戳）",
+      "description": "把 B站视频字幕按「[mm:ss] 句子」复制出来，方便对着进度条回看定位（需顺手 v0.19+ 且登录 B站）",
+      "author": "养恐龙",
+      "version": "1.0.0",
+      "tags": ["站点"],
+      "path": "packs/bilibili-subtitle-timed.action-pack.json"
     }
   ]
 }
