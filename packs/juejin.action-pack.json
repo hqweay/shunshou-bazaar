@@ -1,0 +1,58 @@
+{
+  "kind": "shunshou.action-pack",
+  "schemaVersion": 2,
+  "name": "掘金",
+  "version": "1.0.0",
+  "author": "养恐龙",
+  "description": "在掘金文章页面复制链接、复制网页剪藏，或生成全文分享卡片；装上即用",
+  "requires": {
+    "capabilities": ["clip.copy", "share.card"],
+    "connections": []
+  },
+  "provides": {
+    "scene": {
+      "id": "bazaar-juejin",
+      "name": "掘金",
+      "match": { "url": ["*://juejin.cn/post/*"] },
+      "priority": 10,
+      "pinned": ["bazaar-juejin-copy-link", "bazaar-juejin-copy-clip"],
+      "tree": [
+        {
+          "kind": "action",
+          "id": "bazaar-juejin-copy-link",
+          "capability": "clip.copy",
+          "label": "复制链接",
+          "description": "复制为 [标题](链接)",
+          "icon": "si:juejin",
+          "params": { "template": "{{link}}" }
+        },
+        {
+          "kind": "action",
+          "id": "bazaar-juejin-copy-clip",
+          "capability": "clip.copy",
+          "label": "复制网页剪藏",
+          "description": "复制正文与链接",
+          "icon": "lucide:clipboard-copy",
+          "params": { "template": "{{page.clip}}\n\n{{url}}" }
+        },
+        {
+          "kind": "action",
+          "id": "bazaar-juejin-share",
+          "capability": "share.card",
+          "label": "分享全文卡片",
+          "description": "把标题与正文渲染成分享图",
+          "icon": "lucide:image",
+          "params": {
+            "size": "auto",
+            "blocks": [
+              { "kind": "title", "template": "{{title}}" },
+              { "kind": "text", "template": "{{page.clip}}" },
+              { "kind": "meta", "template": "{{url}}" }
+            ]
+          },
+          "then": [{ "capability": "deliver.copyImage", "label": "复制图片", "params": {} }]
+        }
+      ]
+    }
+  }
+}

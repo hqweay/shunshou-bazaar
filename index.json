@@ -91,6 +91,42 @@
       "version": "1.0.0",
       "tags": ["笔记", "动作链"],
       "path": "packs/save-open-siyuan.action-pack.json"
+    },
+    {
+      "id": "zhihu",
+      "name": "知乎",
+      "description": "在知乎问题与专栏页面复制链接、复制网页剪藏，或生成全文分享卡片",
+      "author": "养恐龙",
+      "version": "1.0.0",
+      "tags": ["站点"],
+      "path": "packs/zhihu.action-pack.json"
+    },
+    {
+      "id": "weibo",
+      "name": "微博",
+      "description": "在微博页面复制链接、复制网页剪藏，或生成全文分享卡片",
+      "author": "养恐龙",
+      "version": "1.0.0",
+      "tags": ["站点"],
+      "path": "packs/weibo.action-pack.json"
+    },
+    {
+      "id": "juejin",
+      "name": "掘金",
+      "description": "在掘金文章页面复制链接、复制网页剪藏，或生成全文分享卡片",
+      "author": "养恐龙",
+      "version": "1.0.0",
+      "tags": ["站点"],
+      "path": "packs/juejin.action-pack.json"
+    },
+    {
+      "id": "reddit",
+      "name": "Reddit",
+      "description": "在 Reddit 帖子页面复制链接、复制网页剪藏，或生成全文分享卡片",
+      "author": "养恐龙",
+      "version": "1.0.0",
+      "tags": ["站点"],
+      "path": "packs/reddit.action-pack.json"
     }
   ]
 }
