@@ -1,7 +1,16 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-09-19",
+  "updatedAt": "2026-09-20",
   "items": [
+    {
+      "id": "xiaohongshu-notes",
+      "name": "小红书 → 笔记",
+      "description": "小红书笔记页：把标题 / 正文 / 全部图片存进思源文档、Obsidian 库或虎鲸笔记（需顺手 v0.20+）",
+      "author": "养恐龙",
+      "version": "1.0.0",
+      "tags": ["站点", "笔记"],
+      "path": "packs/xiaohongshu-notes.action-pack.json"
+    },
     {
       "id": "x-automation",
       "name": "X 自动化示例",

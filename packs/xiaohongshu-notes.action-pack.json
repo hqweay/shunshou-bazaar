@@ -1,0 +1,74 @@
+{
+  "kind": "shunshou.action-pack",
+  "schemaVersion": 2,
+  "name": "小红书 → 笔记",
+  "version": "1.0.0",
+  "author": "养恐龙",
+  "description": "在小红书笔记页把标题 / 正文 / 全部图片存进思源文档、Obsidian 库或虎鲸笔记（图片自动落资源库 / 本地化；思源与虎鲸需先配好连接）。图片依赖顺手 v0.20+ 的 `{{…:md}}` 渲染提示，旧版本会把图片清单写成纯文本链接。",
+  "requires": {
+    "capabilities": ["siyuan.doc", "obsidian.clip", "orca.capture"],
+    "connections": [
+      { "kind": "siyuan", "label": "思源笔记" },
+      { "kind": "orca", "label": "虎鲸笔记" }
+    ]
+  },
+  "provides": {
+    "scene": {
+      "id": "bazaar-xiaohongshu-notes",
+      "name": "小红书",
+      "priority": 10,
+      "match": {
+        "url": ["*://www.xiaohongshu.com/explore/*", "*://www.xiaohongshu.com/discovery/item/*"]
+      },
+      "pinned": [],
+      "tree": [
+        {
+          "kind": "action",
+          "id": "bazaar-xhs-notes-siyuan",
+          "capability": "siyuan.doc",
+          "label": "存到思源笔记",
+          "description": "标题 + 正文 + 全部图片（自动上传思源资源库）存进思源；默认追加到今日日记，也可在「目标文档」填标题改为一条一篇",
+          "icon": "si:siyuan",
+          "params": {
+            "connection": "",
+            "notebook": "",
+            "document": "",
+            "template": "{{field.xiaohongshu.note.text}}\n\n{{field.xiaohongshu.note.images:md}}\n\n> {{field.xiaohongshu.note.author}} · {{field.xiaohongshu.note.url}}",
+            "position": "lastChild"
+          }
+        },
+        {
+          "kind": "action",
+          "id": "bazaar-xhs-notes-obsidian",
+          "capability": "obsidian.clip",
+          "label": "存到 Obsidian",
+          "description": "把笔记存进 Obsidian 库「顺手/小红书/标题.md」，图片保留远程链接（本机需装了 Obsidian）",
+          "icon": "si:obsidian",
+          "params": {
+            "vault": "",
+            "path": "顺手/小红书/{{field.xiaohongshu.note.title}}",
+            "content": "{{field.xiaohongshu.note.desc}}\n\n{{field.xiaohongshu.note.images:md}}\n\n> {{field.xiaohongshu.note.author}} · {{field.xiaohongshu.note.url}}",
+            "mode": "new",
+            "silent": true
+          }
+        },
+        {
+          "kind": "action",
+          "id": "bazaar-xhs-notes-orca",
+          "capability": "orca.capture",
+          "label": "存到虎鲸笔记",
+          "description": "标题作为父块、正文与全部图片作为子块，挂「小红书」标签（图片保留远程链接）",
+          "icon": "lucide:notebook-pen",
+          "params": {
+            "connection": "",
+            "template": "{{field.xiaohongshu.note.title}}\n\n{{field.xiaohongshu.note.desc}}\n\n{{field.xiaohongshu.note.images:md}}\n\n> {{field.xiaohongshu.note.author}} · {{field.xiaohongshu.note.url}}",
+            "tags": [{ "name": "小红书" }],
+            "target": "",
+            "position": "lastChild",
+            "nest": true
+          }
+        }
+      ]
+    }
+  }
+}
