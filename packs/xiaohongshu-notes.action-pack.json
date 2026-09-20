@@ -6,7 +6,7 @@
   "author": "养恐龙",
   "description": "在小红书笔记页把标题 / 正文 / 全部图片存进思源文档、Obsidian 库或虎鲸笔记（图片自动落资源库 / 本地化；思源与虎鲸需先配好连接）。图片依赖顺手 v0.20+ 的 `{{…:md}}` 渲染提示，旧版本会把图片清单写成纯文本链接。",
   "requires": {
-    "capabilities": ["siyuan.doc", "obsidian.clip", "orca.capture"],
+    "capabilities": ["siyuan.docDatabase", "obsidian.clip", "orca.capture"],
     "connections": [
       { "kind": "siyuan", "label": "思源笔记" },
       { "kind": "orca", "label": "虎鲸笔记" }
@@ -25,16 +25,22 @@
         {
           "kind": "action",
           "id": "bazaar-xhs-notes-siyuan",
-          "capability": "siyuan.doc",
+          "capability": "siyuan.docDatabase",
           "label": "存到思源笔记",
-          "description": "标题 + 正文 + 全部图片（自动上传思源资源库）存进思源；默认追加到今日日记，也可在「目标文档」填标题改为一条一篇",
+          "description": "新建一篇思源文档（标题 = 笔记标题，正文含全部图片，图片自动上传资源库）并绑定进所选数据库",
           "icon": "si:siyuan",
           "params": {
             "connection": "",
+            "database": "",
+            "mode": "template",
+            "template": "",
             "notebook": "",
-            "document": "",
-            "template": "{{field.xiaohongshu.note.text}}\n\n{{field.xiaohongshu.note.images:md}}\n\n> {{field.xiaohongshu.note.author}} · {{field.xiaohongshu.note.url}}",
-            "position": "lastChild"
+            "path": "/收集/{{dateText}}/{{field.xiaohongshu.note.title}}",
+            "title": "{{field.xiaohongshu.note.title}}",
+            "content": "{{field.xiaohongshu.note.desc}}\n\n{{field.xiaohongshu.note.images:md}}\n\n> {{field.xiaohongshu.note.author}} · {{field.xiaohongshu.note.url}}",
+            "tags": "",
+            "images": "asset",
+            "duplicates": "ask"
           }
         },
         {

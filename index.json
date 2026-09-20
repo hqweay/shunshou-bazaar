@@ -5,7 +5,7 @@
     {
       "id": "xiaohongshu-notes",
       "name": "小红书 → 笔记",
-      "description": "小红书笔记页：把标题 / 正文 / 全部图片存进思源文档、Obsidian 库或虎鲸笔记（需顺手 v0.20+）",
+      "description": "小红书笔记页：把标题 / 正文 / 全部图片存进思源（新建文档并绑定数据库）、Obsidian 库或虎鲸笔记（需顺手 v0.20+）",
       "author": "养恐龙",
       "version": "1.0.0",
       "tags": ["站点", "笔记"],
