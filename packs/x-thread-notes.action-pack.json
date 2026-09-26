@@ -1,0 +1,67 @@
+{
+  "kind": "shunshou.action-pack",
+  "schemaVersion": 2,
+  "name": "X 推文串 → 笔记",
+  "version": "1.0.0",
+  "author": "养恐龙",
+  "description": "在 X / Twitter 状态页把作者自串（整串推文，含祖先与续推）存进思源文档或虎鲸笔记（图片自动落资源库 / 保留远程链接；思源与虎鲸需先配好连接）。需含 X 推文串提取器的新版顺手（v0.21+）；旧版本安装后动作会提示缺少变量，升级即可用。",
+  "requires": {
+    "capabilities": ["siyuan.doc", "orca.capture"],
+    "connections": [
+      { "kind": "siyuan", "label": "思源笔记" },
+      { "kind": "orca", "label": "虎鲸笔记" }
+    ]
+  },
+  "provides": {
+    "scene": {
+      "id": "bazaar-x-thread-notes",
+      "name": "X 推文串",
+      "priority": 10,
+      "match": {
+        "url": ["*://x.com/*/status/*", "*://twitter.com/*/status/*"]
+      },
+      "pinned": [],
+      "tree": [
+        {
+          "kind": "action",
+          "id": "bazaar-x-thread-notes-siyuan",
+          "capability": "siyuan.doc",
+          "label": "存推文串到思源",
+          "description": "把整串推文（作者自串）存成思源文档，图片自动上传资源库",
+          "icon": "si:siyuan",
+          "params": {
+            "connection": "",
+            "notebook": "",
+            "document": "",
+            "template": "{{field.twitter.thread.text}}\n\n{{field.twitter.thread.images:md}}\n\n> {{field.twitter.thread.author}} · @{{field.twitter.thread.handle}} · {{field.twitter.thread.url}}",
+            "position": "lastChild"
+          }
+        },
+        {
+          "kind": "action",
+          "id": "bazaar-x-thread-notes-orca",
+          "capability": "orca.capture",
+          "label": "存推文串到虎鲸",
+          "description": "把整串推文（作者自串）存进虎鲸笔记，挂「X推文」标签（图片保留远程链接）",
+          "icon": "lucide:notebook-pen",
+          "params": {
+            "connection": "",
+            "template": "{{field.twitter.thread.text}}\n\n{{field.twitter.thread.images:md}}\n\n> {{field.twitter.thread.author}} · @{{field.twitter.thread.handle}} · {{field.twitter.thread.url}}",
+            "tags": [
+              {
+                "name": "X推文",
+                "props": {
+                  "作者": "{{field.twitter.thread.author}}",
+                  "链接": { "value": "{{field.twitter.thread.url}}", "type": "link" },
+                  "条数": { "value": "{{field.twitter.thread.count}}", "type": "number" }
+                }
+              }
+            ],
+            "target": "",
+            "position": "lastChild"
+          }
+        }
+      ]
+    }
+  }
+}
