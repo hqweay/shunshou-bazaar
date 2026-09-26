@@ -2,9 +2,9 @@
   "kind": "shunshou.action-pack",
   "schemaVersion": 2,
   "name": "X 推文",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "author": "养恐龙",
-  "description": "在 X / Twitter 状态页提取推文：复制正文与链接，或生成推文分享卡片（正文 + 最多 4 张图）。需含 X 推文提取器的新版顺手（v0.5+）；旧版安装后动作会提示缺少变量，升级即可用。",
+  "description": "在 X / Twitter 状态页提取推文：复制正文与链接，或生成推文分享卡片（正文 + 图片墙，最多 4 张）。需含 X 推文提取器的新版顺手（v0.5+）；旧版安装后动作会提示缺少变量，升级即可用。",
   "requires": {
     "capabilities": ["clip.copy", "share.card"],
     "connections": []
@@ -33,7 +33,7 @@
           "id": "bazaar-x-tweet-share",
           "capability": "share.card",
           "label": "分享推文卡片",
-          "description": "把推文正文与图片渲染成分享图（最多 4 张）",
+          "description": "把推文正文与图片渲染成分享图（图片墙，最多 4 张）",
           "icon": "lucide:image",
           "params": {
             "size": "auto",
@@ -43,10 +43,7 @@
                 "template": "{{field.twitter.tweet.author}} · @{{field.twitter.tweet.handle}}"
               },
               { "kind": "text", "template": "{{field.twitter.tweet.text}}" },
-              { "kind": "image", "template": "{{field.twitter.tweet.image1}}" },
-              { "kind": "image", "template": "{{field.twitter.tweet.image2}}" },
-              { "kind": "image", "template": "{{field.twitter.tweet.image3}}" },
-              { "kind": "image", "template": "{{field.twitter.tweet.image4}}" },
+              { "kind": "gallery", "template": "{{field.twitter.tweet.images}}" },
               {
                 "kind": "meta",
                 "template": "{{field.twitter.tweet.date}} · {{field.twitter.tweet.url}}"
