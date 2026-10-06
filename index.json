@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-09-20",
+  "updatedAt": "2026-10-06",
   "items": [
     {
       "id": "xiaohongshu-notes",
@@ -154,6 +154,15 @@
       "version": "1.0.0",
       "tags": ["站点"],
       "path": "packs/bilibili-subtitle-timed.action-pack.json"
+    },
+    {
+      "id": "v2ex-article",
+      "name": "V2EX 正文",
+      "description": "V2EX 话题页正文规则：剪藏取主楼内容、不含回帖噪音——纯规则包，装上后已有的剪藏 / 存笔记动作在 V2EX 变准，无需配置任何东西（需顺手 v0.29+）",
+      "author": "养恐龙",
+      "version": "1.0.0",
+      "tags": ["站点", "正文规则"],
+      "path": "packs/v2ex-article.action-pack.json"
     }
   ]
 }

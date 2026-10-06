@@ -1,0 +1,25 @@
+{
+  "kind": "shunshou.action-pack",
+  "schemaVersion": 3,
+  "name": "V2EX 正文",
+  "version": "1.0.0",
+  "author": "养恐龙",
+  "description": "V2EX 话题页正文规则：剪藏取主楼内容、不含回帖噪音——纯规则包，装上后已有的剪藏 / 存笔记动作在 V2EX 变准，无需配置任何东西（需顺手 v0.29+）",
+  "requires": {
+    "capabilities": [],
+    "connections": []
+  },
+  "provides": {
+    "siteRules": [
+      {
+        "id": "user.section.v2ex.com.t",
+        "match": {
+          "url": ["*://v2ex.com/t/*", "*://*.v2ex.com/t/*"]
+        },
+        "article": {
+          "selectors": ["#Main > div.box:nth-child(2) > div.cell"]
+        }
+      }
+    ]
+  }
+}
