@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-10-06",
+  "updatedAt": "2026-10-11",
   "items": [
     {
       "id": "xiaohongshu-notes",
@@ -64,6 +64,15 @@
       "version": "1.0.0",
       "tags": ["笔记", "动作链"],
       "path": "packs/dual-capture.action-pack.json"
+    },
+    {
+      "id": "highlights-notes",
+      "name": "本页高亮 → 笔记",
+      "description": "把当前页面的网页高亮一次存进思源文档或虎鲸笔记（虎鲸按书签挂标签，每条高亮作子块；虎鲸 / 思源需先配好连接，需顺手 v0.29+）",
+      "author": "养恐龙",
+      "version": "1.0.0",
+      "tags": ["笔记"],
+      "path": "packs/highlights-notes.action-pack.json"
     },
     {
       "id": "capture-and-copy",

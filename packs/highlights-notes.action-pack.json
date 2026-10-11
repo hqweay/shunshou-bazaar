@@ -1,0 +1,66 @@
+{
+  "kind": "shunshou.action-pack",
+  "schemaVersion": 2,
+  "name": "本页高亮 → 笔记",
+  "version": "1.0.0",
+  "author": "养恐龙",
+  "description": "把当前页面的网页高亮一次存进思源文档或虎鲸笔记（虎鲸按书签挂标签，每条高亮作子块；思源与虎鲸需先配好连接）。需含网页高亮的新版顺手（v0.29+）；本页没有高亮时动作会提示先加高亮。",
+  "requires": {
+    "capabilities": ["siyuan.doc", "orca.capture"],
+    "connections": [
+      { "kind": "siyuan", "label": "思源笔记" },
+      { "kind": "orca", "label": "虎鲸笔记" }
+    ]
+  },
+  "provides": {
+    "scene": {
+      "id": "bazaar-highlights-notes",
+      "name": "本页高亮",
+      "priority": 10,
+      "match": null,
+      "pinned": [],
+      "tree": [
+        {
+          "kind": "action",
+          "id": "bazaar-highlights-notes-siyuan",
+          "capability": "siyuan.doc",
+          "label": "存本页高亮到思源",
+          "description": "把本页全部高亮存进思源的目标文档（留空 = 今日日记）",
+          "icon": "si:siyuan",
+          "params": {
+            "connection": "",
+            "notebook": "",
+            "document": "",
+            "template": "{{title}}\n\n{{highlights}}",
+            "position": "lastChild"
+          }
+        },
+        {
+          "kind": "action",
+          "id": "bazaar-highlights-notes-orca",
+          "capability": "orca.capture",
+          "label": "存本页高亮到虎鲸",
+          "description": "把本页全部高亮一次存进虎鲸笔记：网页书签为父块（标签挂它），每条高亮为子块",
+          "icon": "lucide:highlighter",
+          "params": {
+            "connection": "",
+            "template": "{{title}}\n\n{{highlights}}",
+            "tags": [
+              {
+                "name": "书签",
+                "props": {
+                  "标题": "{{title}}",
+                  "链接": "{{url}}",
+                  "域名": "{{hostname}}"
+                }
+              }
+            ],
+            "target": "",
+            "position": "lastChild",
+            "nest": true
+          }
+        }
+      ]
+    }
+  }
+}
