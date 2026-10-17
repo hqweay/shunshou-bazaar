@@ -1,7 +1,16 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-10-11",
+  "updatedAt": "2026-10-18",
   "items": [
+    {
+      "id": "x-tweet-extract-orca",
+      "name": "推文萃取（虎鲸）",
+      "description": "X / Twitter 状态页：用 AI 做「价值萃取」（先判类型再只输出对应模板：资源列表 / 观点论证 / 故事案例 / 教程方法 / 新闻数据 / 金句洞察），连同作者与发布时间存进虎鲸笔记书签并挂「书签」标签（需自备 AI 模型与虎鲸连接，需顺手 v0.31+）",
+      "author": "养恐龙",
+      "version": "1.0.0",
+      "tags": ["站点", "笔记", "AI"],
+      "path": "packs/x-tweet-extract-orca.action-pack.json"
+    },
     {
       "id": "xiaohongshu-notes",
       "name": "小红书 → 笔记",
